@@ -71,17 +71,17 @@ module Rails #:nodoc:
             end
 
             # Check (and upgrade if needed) all design documents
-            config.after_initialize do |app|
-                if config.couchbase_orm.ensure_design_documents
-                    begin
-                        ::CouchbaseOrm::Base.descendants.each do |model|
-                            model.ensure_design_document!
-                        end
-                    rescue ::MTLibcouchbase::Error::Timedout, ::MTLibcouchbase::Error::ConnectError, ::MTLibcouchbase::Error::NetworkError
-                        # skip connection errors for now
-                    end
-                end
-            end
+            # config.after_initialize do |app|
+            #     if config.couchbase_orm.ensure_design_documents
+            #         begin
+            #             ::CouchbaseOrm::Base.descendants.each do |model|
+            #                 model.ensure_design_document!
+            #             end
+            #         rescue ::MTLibcouchbase::Error::Timedout, ::MTLibcouchbase::Error::ConnectError, ::MTLibcouchbase::Error::NetworkError
+            #             # skip connection errors for now
+            #         end
+            #     end
+            # end
         end
     end
 end
